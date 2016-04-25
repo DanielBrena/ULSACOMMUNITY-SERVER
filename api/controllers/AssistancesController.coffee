@@ -21,8 +21,6 @@ module.exports =
             console.log 'Asistencia creada'
           return
 
-      #return
-    #return
       return res.json 200, message:'Asistencia exitosa.'
 
     return
