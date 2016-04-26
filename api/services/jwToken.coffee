@@ -6,7 +6,7 @@
 ###
 
 jwt = require 'jsonwebtoken'
-tokenSecret = 'ulsacommunitytoken'
+tokenSecret = 'ulsacommunitywebtoken'
 tiempo = expiresInMinutes:180
 
 module.exports.issue = (payload) ->

@@ -43,17 +43,20 @@ module.exports =
       bcrypt.hash values.password, salt, (err, hash) ->
         return next err if err
         values.encryptedPassword = hash;
-        if values.access_level == 0
-          user =
-            username:values.username
-            password:values.password
-            email:values.email
-            hash:values.hash
+        next()
+        return
+      return
+        # if values.access_level == 0
+        #   user =
+        #     username:values.username
+        #     password:values.password
+        #     email:values.email
+        #     hash:values.hash
 
 
           #EmailActivateService.enviarActivacion user
       #  values.hash = "12345"
-				next()
+
     return
 
   beforeUpdate: (values, next) ->
