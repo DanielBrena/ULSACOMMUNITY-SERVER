@@ -13,9 +13,14 @@ module.exports =
       model:'activities'
     description:
       type:'string'
-    fecha:
+    dateStart:
       type:'date'
       required:true
+    dateEnd:
+      type:'date'
+      required:true
+    time:
+      type:'datetime'
     file:
       type:'string'
   }

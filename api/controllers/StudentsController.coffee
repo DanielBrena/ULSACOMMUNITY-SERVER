@@ -4,6 +4,11 @@
  # @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
 
 module.exports =
+  profile: (req,res) ->
+    console.log req.token
+    StudentsService.findStudent req.token.user.id, (error, student) ->
+      res.json student
+
   findByQuery:(req,res)->
     search = req.param 'search'
     Students.find(or:[

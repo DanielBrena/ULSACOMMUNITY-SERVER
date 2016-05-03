@@ -60,13 +60,16 @@ module.exports =
     return
 
   beforeUpdate: (values, next) ->
-    if values.encryptedPassword
+    if values.password
       bcrypt.genSalt 10, (err,salt) ->
         return next err if err
         bcrypt.hash values.password, salt, (err, hash) ->
           return next err if err
           values.encryptedPassword = hash;
           next()
+          return
+        return
+      return
     next()
     return
 

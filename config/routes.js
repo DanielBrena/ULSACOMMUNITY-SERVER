@@ -46,6 +46,28 @@ module.exports.routes = {
   'get /students/:student?/assistancesByGroup/:group?':{
     controller:'students',
     action:'assistancesByGroup'
+  },
+
+  //statistics
+  'get /statistics/studentsTeacher/:teacher?/gender/:gender?':{
+    controller:'statistics',
+    action:'studentsTeacher'
+  },
+  'get /assistances/:group?/type/:type?':{
+    controller:'assistances',
+    action:'getAssistances'
+  },
+  'get /assistances/types/:type?':{
+    controller:'assistances',
+    action:'getAssistancesType'
+  },
+  'get /assistances/reporte/:date?':{
+    controller:'assistances',
+    action:'export'
+  },
+  'get /students/me':{
+    controller:'students',
+    action:'profile'
   }
 
   /***************************************************************************

@@ -8,7 +8,7 @@ module.exports =
   createAll: (req,res)->
     grupo = req.param 'grupo'
     estudiantes = JSON.parse(req.param 'estudiantes')
-    fecha = moment(moment().format("YYYY-MM-DD")).toISOString();
+    fecha = new Date(2016,3,28).toISOString()##moment(moment().format("YYYY-MM-DD")).toISOString();
     if req.param 'fecha'
       fecha = req.param 'fecha'
     Assistances.findOne(date:fecha,group:grupo).exec (error,assistance)->
@@ -53,11 +53,24 @@ module.exports =
       return res.json 200, status:false, 'No se pasó lista en el grupo'
     return
 
+  getAssistances: (req, res)->
+    grupo = req.param 'group'
+    tipo = req.param 'type'
+    Assistances.find(group:grupo,type2:tipo).exec (error,assistances)->
+      res.json assistances
+
+  getAssistancesType: (req,res)->
+    tipo = req.param 'type'
+    console.log tipo
+    Assistances.find(type2:tipo).exec (error,assistances)->
+      res.json assistances
+
+
   export:(req, res)->
     dia = req.param 'dia'
     mes = req.param 'mes'
     anio = req.param 'anio'
-    fecha = new Date(2016,2,11).toISOString()
+    fecha = req.param 'date'#new Date(2016,3,15).toISOString()
     console.log fecha
     conf = {}
     conf.name = 'Reporte'
@@ -99,7 +112,7 @@ module.exports =
         type:'string'
       }]
     rows = []
-    Assistances.find(type2:'viernes cultural',date:fecha).populate('student').populate('group').exec (error,assistances)->
+    Assistances.find(type2:'viernes cultural',date:new Date(fecha)).populate('student').populate('group').exec (error,assistances)->
       for assistance in assistances
         alumno = []
         alumno.push assistance.student.registration_number

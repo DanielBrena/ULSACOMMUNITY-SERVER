@@ -30,8 +30,13 @@ module.exports.policies = {
 
   // '*': true,
   TeachersController:{
-    'find':['isAuthorized'],
-    'profile':['isAuthorized']
+    'find':true,//['isAuthorized'],
+    'profile':['isAuthorized'],
+    'statisticsViernes':['isAuthorized'],
+    'statisticsGenderStudents':['isAuthorized']
+  },
+  StudentsController:{
+    'profile':['isAuthorizedStudent']
   }
   /***************************************************************************
   *                                                                          *

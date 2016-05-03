@@ -7,13 +7,14 @@ module.exports =
   index: (req,res) ->
     email = req.param 'email'
     password = req.param 'password'
+    username = req.param 'username'
     return res.error 401, 'Correo y contraseña son requeridos.' if !email and !password
     Users.findOne email:email, (error,user) ->
       return res.error 401,'No existe el usuario.' if !user
       Users.comparePassword password, user, (error, valido) ->
         return res.error 403, 'Prohibido el acceso.' if error
         return res.error 401, 'Correo y contraseña son requeridos.' if !valido
-        res.json user:user,token:jwToken.issue id:user.id
+        res.json user:user,token:jwToken.issue user:user
         return
       return
     return
