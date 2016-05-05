@@ -2,7 +2,7 @@
  #
  # @description :: Server-side logic for managing Students
  # @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
-
+winston = require 'winston'
 module.exports =
   profile: (req,res) ->
     console.log req.token
@@ -10,6 +10,8 @@ module.exports =
       res.json student
 
   findByQuery:(req,res)->
+    winston.level = 'debug';
+    winston.log 'info', 'Busqueda';
     search = req.param 'search'
     Students.find(or:[
       {registration_number:search}
