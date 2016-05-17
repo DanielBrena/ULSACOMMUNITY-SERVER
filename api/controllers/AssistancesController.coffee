@@ -13,7 +13,7 @@ module.exports =
 
       fecha = req.param 'fecha'
       #fecha = new Date(fecha)
-      fecha = moment(fecha, "YYYY-MM-DD").add(1,"days").toISOString();
+      fecha = moment(fecha, "YYYY-MM-DD").toISOString();
 
       console.log fecha
 
