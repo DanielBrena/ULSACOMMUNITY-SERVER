@@ -18,7 +18,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   connection: 'someMongodbServerDeploy',
-  //connection:'someMongodbServerTest',
+//  connection:'someMongodbServerTest',
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *

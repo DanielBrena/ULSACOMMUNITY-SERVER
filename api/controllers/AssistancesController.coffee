@@ -8,18 +8,21 @@ module.exports =
   createAll: (req,res)->
     grupo = req.param 'grupo'
     estudiantes = JSON.parse(req.param 'estudiantes')
-    fecha = new Date(2016,3,28).toISOString()##moment(moment().format("YYYY-MM-DD")).toISOString();
+    fecha = moment(moment().format("YYYY-MM-DD")).toISOString()#new Date(2016,3,28).toISOString()##
     if req.param 'fecha'
       fecha = req.param 'fecha'
-    Assistances.findOne(date:fecha,group:grupo).exec (error,assistance)->
-      return res.error 202, 'Ya existe la asistencia del dia ' + fecha if assistance
-      for estudiante in estudiantes
-        console.log estudiante.assistance
-        #console.log estudiante
-        Assistances.create(student:estudiante.id,group:grupo,date:fecha,type:estudiante.assistance).exec (error, a)->
+      console.log fecha
 
+    Assistances.findOne(date:fecha,group:grupo).exec (error,assistance)->
+      return res.error 404, 'Ya existe la asistencia del dia ' + fecha if assistance
+      for estudiante in estudiantes
+        #console.log estudiante
+
+        Assistances.create(student:estudiante.id,group:grupo,date:fecha,type:estudiante.assistance).exec (error, a)->
+          console.log error if error
           if a
             console.log 'Asistencia creada'
+
           return
 
       return res.json 200, message:'Asistencia exitosa.'
