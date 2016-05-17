@@ -10,7 +10,9 @@ module.exports =
     estudiantes = JSON.parse(req.param 'estudiantes')
     fecha = moment(moment().format("YYYY-MM-DD")).toISOString()#new Date(2016,3,28).toISOString()##
     if req.param 'fecha'
+
       fecha = req.param 'fecha'
+      fecha = moment(fecha, "DD-MM-YYYY");
       console.log fecha
 
     Assistances.findOne(date:fecha,group:grupo).exec (error,assistance)->
