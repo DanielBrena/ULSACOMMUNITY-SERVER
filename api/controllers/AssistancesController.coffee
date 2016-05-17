@@ -12,8 +12,7 @@ module.exports =
     if req.param 'fecha'
 
       fecha = req.param 'fecha'
-      fecha = new Date(fecha)
-    #  fecha = moment(fecha, "DD-MM-YYYY");
+      #fecha = new Date(fecha)
 
       console.log fecha
 
