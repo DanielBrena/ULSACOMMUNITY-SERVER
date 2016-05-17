@@ -12,7 +12,7 @@ module.exports =
     if req.param 'fecha'
 
       fecha = req.param 'fecha'
-      fecha = moment(fecha, "DD-MM-YYYY");
+    #  fecha = moment(fecha, "DD-MM-YYYY");
       console.log fecha
 
     Assistances.findOne(date:fecha,group:grupo).exec (error,assistance)->
