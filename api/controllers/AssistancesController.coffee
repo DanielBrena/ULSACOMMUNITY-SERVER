@@ -33,6 +33,14 @@ module.exports =
 
     return
 
+  deleteAll:(req,res)->
+    grupo = req.param 'grupo'
+    fecha = req.param 'fecha'
+    fecha = moment(fecha, "YYYY-MM-DD").toISOString();
+
+    Assistances.destroy({group:grupo,date:fecha}).exec (error, assistance)->
+      return res.error 404, 'Error al eliminar la asistecia' if error
+      return res.json 200, message:'Asistencias eliminadas'
 
 
 
