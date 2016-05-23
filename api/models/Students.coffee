@@ -18,8 +18,8 @@ module.exports =
       type:'string'
       enum:['hombre','mujer']
     semester:
-      type:'integer'
-      enum:[1,2,3,4,5,6,7,8,9,10]
+      type:'string'
+      enum:['1','2','3','4','5','6','7','8','9','10']
     assistances:
       collection:'assistances'
       via:'student'
