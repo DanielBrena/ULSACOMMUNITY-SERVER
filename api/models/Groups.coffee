@@ -32,4 +32,6 @@ module.exports =
       via:'group'
     teacher:
       model:'teachers'
+    image:
+      type:'string'
   }
