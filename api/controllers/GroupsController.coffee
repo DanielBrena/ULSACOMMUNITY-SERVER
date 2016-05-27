@@ -43,7 +43,7 @@ module.exports =
     return res.json 200, message:'Alumno removido.'
 
   uploadImage:(req,res)->
-    data = req.param 'grupo'
+    grupo = req.param 'grupo'
     if req.file 'file'
       req.file('file').upload dirname: sails.config.appPath+'/assets/images/grupos', (error,files)->
         return error if error
@@ -53,7 +53,7 @@ module.exports =
         Groups.update({id:grupo},{image:nameFile}).exec (err,group)->
           return err if err
           res.json group
-          
+
 
   findGroupsActive:(req,res)->
     GroupsService.findGroups (err, groups)->
