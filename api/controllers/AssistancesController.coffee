@@ -52,6 +52,7 @@ module.exports =
     fecha = moment(moment().format("YYYY-MM-DD")).toISOString();
     if req.param 'fecha'
       fecha = req.param 'fecha'
+      fecha = moment(fecha, "YYYY-MM-DD").toISOString();
 
     Assistances.findOne(date:fecha,group:grupo,student:alumno,type2:tipo2).exec (error,assistance) ->
       return res.error 404, 'Ya tiene asistencía el alumno.' if assistance
