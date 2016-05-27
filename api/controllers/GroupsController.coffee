@@ -42,6 +42,8 @@ module.exports =
       return
     return res.json 200, message:'Alumno removido.'
 
+  
+
   findGroupsActive:(req,res)->
     GroupsService.findGroups (err, groups)->
       res.json groups

@@ -16,8 +16,6 @@ module.exports =
 
 
   create:(req,res)->
-
-   #console.log sails.config.appPath
    console.log req.body
    data = req.body
    if req.body.file != 'null'

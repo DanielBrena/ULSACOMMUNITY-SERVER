@@ -17,7 +17,7 @@ module.exports =
 
       console.log fecha
 
-    Assistances.findOne(date:fecha,group:grupo).exec (error,assistance)->
+    Assistances.findOne(date:fecha,group:grupo,type2:'asistencia').exec (error,assistance)->
       return res.error 404, 'Ya existe la asistencia del dia ' + fecha if assistance
       for estudiante in estudiantes
         #console.log estudiante
