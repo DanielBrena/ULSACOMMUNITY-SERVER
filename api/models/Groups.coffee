@@ -34,4 +34,7 @@ module.exports =
       model:'teachers'
     image:
       type:'string'
+    events:
+      collection:'events'
+      via:'group'
   }

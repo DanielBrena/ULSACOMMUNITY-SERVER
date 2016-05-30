@@ -9,8 +9,8 @@ module.exports =
     title:
       type:'string'
       required:true
-    activity:
-      model:'activities'
+    group:
+      model:'groups'
     description:
       type:'string'
     dateStart:
@@ -19,8 +19,13 @@ module.exports =
     dateEnd:
       type:'date'
       required:true
-    time:
-      type:'datetime'
     file:
       type:'string'
+    diffusion:
+      type:'string',
+      enum:['todos','maestros','grupos']
+    type:
+      type:'string'
+      enum:['evento','aviso']
+
   }

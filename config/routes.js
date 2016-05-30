@@ -68,6 +68,10 @@ module.exports.routes = {
   'get /students/me':{
     controller:'students',
     action:'profile'
+  },
+  'get /events/getEventos/:diffusion?/:groups?':{
+    controller:'events',
+    action:'getEventos'
   }
 
   /***************************************************************************
