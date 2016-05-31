@@ -58,3 +58,9 @@ module.exports =
   findGroupsActive:(req,res)->
     GroupsService.findGroups (err, groups)->
       res.json groups
+
+  findGroupsQuery:(req,res)->
+    query = req.param 'query'
+    console.log query
+    GroupsService.findGroupsQuery query, (err,groups)->
+      res.json groups

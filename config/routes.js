@@ -72,7 +72,12 @@ module.exports.routes = {
   'get /events/getEventos/:diffusion?/:groups?':{
     controller:'events',
     action:'getEventos'
+  },
+  'get /tablequalification/getQualification/:assistance?':{
+    controller:'tablequalification',
+    action:'getQualification'
   }
+
 
   /***************************************************************************
   *                                                                          *

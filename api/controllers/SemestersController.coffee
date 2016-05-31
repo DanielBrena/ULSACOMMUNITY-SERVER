@@ -105,4 +105,14 @@ module.exports = {
   }
   ###
 
+  update: (req,res)->
+    console.log req.body
+    Semesters.update({},{active:false}).exec (err, semesters)->
+      return err if err
+      Semesters.update({id:req.body.id},req.body).exec (err1,semesters1)->
+        return err1 if err1
+        res.json semesters1
+      return
+    return
+
 }
