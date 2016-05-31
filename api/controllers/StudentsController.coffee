@@ -30,7 +30,7 @@ module.exports =
       {registration_number:search}
       {name:{'contains':search}}
       {lastname:{'contains':search}}
-      ]).limit(15).exec (e,s)->
+      ]).populate('assistances').limit(15).exec (e,s)->
         res.json students:s.students
         return
 
