@@ -23,6 +23,18 @@ module.exports =
         )
     return
 
+  findByGroup:(req,res)->
+    search = req.param 'search'
+    group = req.param 'group'
+    Groups.findOne({id:group}).populate('students',or:[
+      {registration_number:search}
+      {name:{'contains':search}}
+      {lastname:{'contains':search}}
+      ]).limit(15).exec (e,s)->
+        res.json students:s.students
+        return
+
+
   assistancesByGroup:(req,res)->
     id = req.param 'student'
     grupo = req.param 'group'
