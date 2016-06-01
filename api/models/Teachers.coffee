@@ -13,6 +13,12 @@ module.exports =
       type:'string',
     user:
       model:'users'
+    active:
+      type:'boolean'
+      defaultsTo:false
+    gender:
+      type:'string',
+      enum:['hombre','mujer']
     groups:
       collection:'groups'
       via:'teacher'

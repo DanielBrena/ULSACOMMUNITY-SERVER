@@ -15,7 +15,17 @@ module.exports =
         res.json s
 
 
-      #populate('students').exec(function(e,s){ console.log(s)  });
+  findByQuery:(req,res)->
+    search = req.param 'search'
+    console.log 'q : ' +search
+    Teachers.find(or:[
+      {name:{'contains':search}}
+      {lastname:{'contains':search}}
+      ]).populate('groups').populate('user').limit(10).exec (e,t)->
+        console.log t
+        res.json t
+        return
+    return
 
   statisticsViernes: (req,res)->
     TeachersService.findTeacher req.token.user.id, (error, teacher) ->

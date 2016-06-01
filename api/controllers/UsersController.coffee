@@ -4,7 +4,7 @@
  # @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
 md5 = require 'md5'
 module.exports =
-  createStudent: (req,res,next)->
+  createStudent: (req,res)->
     student = req.param 'student'
     email = req.param 'email'
     username = req.param 'username'
@@ -15,6 +15,19 @@ module.exports =
         s.user = stud.id
         s.save (err1,stud1)->
           res.json stud1
+
+  createTeacher: (req,res)->
+    teacher = req.param 'teacher'
+    email = req.param 'email'
+    username = req.param 'username'
+    password = req.param 'password'
+    Teachers.findOne(teacher).exec (err,t)->
+      Users.create(email:email,username:username,password:password,active:true,access_level:1,teacher:t.id).exec (error,teach)->
+        return error if error
+        t.user = teach.id
+        t.save (err1,teach1)->
+          res.json teach1
+
 
 
 

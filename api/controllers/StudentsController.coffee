@@ -31,7 +31,8 @@ module.exports =
       {name:{'contains':search}}
       {lastname:{'contains':search}}
       ]).populate('assistances').limit(15).exec (e,s)->
-        res.json students:s.students
+        console.log s
+        res.json s
         return
 
 

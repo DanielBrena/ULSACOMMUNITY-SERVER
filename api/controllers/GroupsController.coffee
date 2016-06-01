@@ -28,6 +28,16 @@ module.exports =
 
     return res.json 200, message:'Alumno agregado.'
 
+  addTeacher:(req,res)->
+    group = req.param 'group'
+    teacher = req.param 'teacher'
+    Groups.findOne(id:group).exec (error, group)->
+      return error if error
+      group.teacher = teacher
+      group.save (err,g)->
+        res.json g
+
+
   removeStudent:(req,res)->
     grupo = req.param 'grupo'
     estudiante = req.param 'estudiante'
