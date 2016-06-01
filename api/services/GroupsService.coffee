@@ -6,5 +6,8 @@ module.exports =
 
   findGroupsQuery:(query,callback)->
     Semesters.findOne(active:true).exec (error,semester)->
-      Groups.find({name:{'contains':query},semester:semester.id}).populate('students').exec (err,groups)->
+      Groups.find({or:[
+        {name:{'contains':query}}
+        {description:{'contains':query}}
+        ],semester:semester.id}).populate('students').exec (err,groups)->
         callback null, groups
